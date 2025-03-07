@@ -1,29 +1,6 @@
-/* Login.css */
-.login-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background-color: #f8f9fa; /* Light background */
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  font-size: 2rem;
-  color: #007bff;
-}
-
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.mt-3 {
-  margin-top: 0.75rem;
-}
-
 /* Background GIF */
 .background-overlay {
-  background: url('https://i.giphy.com/media/Xc1r9qbJjLYD6aYK1e/giphy.gif') no-repeat center center/cover; /* Replace with your own GIF URL */
+  background: url('https://i.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif') no-repeat center center/cover; /* Replace with your own GIF URL */
   position: absolute;
   top: 0;
   left: 0;
@@ -47,8 +24,8 @@ h1 {
   z-index: 1;
 }
 
-/* Login Box */
-.login-container {
+/* Signup Box */
+.signup-container {
   background: rgba(255, 255, 255, 0.1); /* Glass effect */
   padding: 30px;
   border-radius: 15px;
@@ -57,28 +34,28 @@ h1 {
   z-index: 2;
 }
 
-/* Login Button */
-.login-button {
-  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+/* Signup Button */
+.signup-button {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
   border: none;
   color: white;
   font-size: 1.2rem;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.login-button:hover {
+.signup-button:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background: linear-gradient(135deg, #5b86e5, #36d1dc);
 }
 
-/* Signup Link */
-.signup-link {
+/* Login Link */
+.login-link {
   font-weight: bold;
   color: #ffcc00;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.signup-link:hover {
+.login-link:hover {
   color: #ff5722;
   transform: scale(1.1);
 }
