@@ -23,7 +23,8 @@ const Login: React.FC = () => {
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
-  
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const navigation = useIonRouter();
 
   // Login function
@@ -38,10 +39,14 @@ const Login: React.FC = () => {
 
   // Signup function
   const doSignup = () => {
-    if (signupName && signupEmail && signupPassword) {
-      alert('Signup successful');
-      setShowSignup(false); // Switch to login view
-      navigation.push('/it35-lab/app', 'forward', 'replace');
+    if (signupName && signupEmail && signupPassword && confirmPassword) {
+      if (signupPassword !== confirmPassword) {
+        alert('Passwords do not match');
+      } else {
+        alert('Account successfully created');
+        setShowSignup(false); // Switch to login view
+        navigation.push('/it35-lab/app', 'forward', 'replace');
+      }
     } else {
       alert('Please fill out all fields correctly');
     }
@@ -132,6 +137,16 @@ const Login: React.FC = () => {
                     type="password" 
                     value={signupPassword} 
                     onIonChange={e => setSignupPassword(e.detail.value!)} 
+                    required 
+                  />
+                </IonItem>
+
+                <IonItem className="animate__animated animate__fadeInRight animate__delay-5s">
+                  <IonLabel position="floating">Confirm Password</IonLabel>
+                  <IonInput 
+                    type="password" 
+                    value={confirmPassword} 
+                    onIonChange={e => setConfirmPassword(e.detail.value!)} 
                     required 
                   />
                 </IonItem>
