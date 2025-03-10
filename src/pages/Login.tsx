@@ -19,8 +19,14 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showSignup, setShowSignup] = useState(false);
+
+  const [signupName, setSignupName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  
   const navigation = useIonRouter();
 
+  // Login function
   const doLogin = () => {
     if (email && password) {
       alert('Login successful');
@@ -30,10 +36,15 @@ const Login: React.FC = () => {
     }
   };
 
+  // Signup function
   const doSignup = () => {
-    alert('Signup successful');
-    setShowSignup(false);
-    navigation.push('/it35-lab/app', 'forward', 'replace');
+    if (signupName && signupEmail && signupPassword) {
+      alert('Signup successful');
+      setShowSignup(false); // Switch to login view
+      navigation.push('/it35-lab/app', 'forward', 'replace');
+    } else {
+      alert('Please fill out all fields correctly');
+    }
   };
 
   return (
@@ -95,19 +106,34 @@ const Login: React.FC = () => {
                 <h2 className="animate__animated animate__fadeInDown">Create an Account</h2>
                 <p className="animate__animated animate__fadeIn animate__delay-1s">Sign up to get started</p>
 
-                <IonItem>
+                <IonItem className="animate__animated animate__fadeInLeft animate__delay-2s">
                   <IonLabel position="floating">Name</IonLabel>
-                  <IonInput type="text" required />
+                  <IonInput 
+                    type="text" 
+                    value={signupName} 
+                    onIonChange={e => setSignupName(e.detail.value!)} 
+                    required 
+                  />
                 </IonItem>
 
-                <IonItem>
+                <IonItem className="animate__animated animate__fadeInRight animate__delay-3s">
                   <IonLabel position="floating">Email</IonLabel>
-                  <IonInput type="email" required />
+                  <IonInput 
+                    type="email" 
+                    value={signupEmail} 
+                    onIonChange={e => setSignupEmail(e.detail.value!)} 
+                    required 
+                  />
                 </IonItem>
 
-                <IonItem>
+                <IonItem className="animate__animated animate__fadeInLeft animate__delay-4s">
                   <IonLabel position="floating">Password</IonLabel>
-                  <IonInput type="password" required />
+                  <IonInput 
+                    type="password" 
+                    value={signupPassword} 
+                    onIonChange={e => setSignupPassword(e.detail.value!)} 
+                    required 
+                  />
                 </IonItem>
 
                 <IonButton 
