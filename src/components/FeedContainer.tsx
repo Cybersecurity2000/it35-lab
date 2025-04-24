@@ -63,7 +63,7 @@ const FeedContainer = () => {
       return;
     }
   
-    const avatarUrl = userData?.user_avatar_url || 'https://ionicframework.com/docs/img/demos/avatar.svg';
+    const avatarUrl = userData?.user_avatar_url || "https://media1.tenor.com/images/e5014aff963de781928c6b96cf3a6bc3/tenor.gif?itemid=15735536";
   
     // Insert post with avatar URL
     const { data, error } = await supabase
