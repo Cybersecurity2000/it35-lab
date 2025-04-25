@@ -10,7 +10,6 @@ import {
   IonToast,  
   useIonRouter
 } from '@ionic/react';
-import { logoIonic } from 'ionicons/icons';
 import { useState } from 'react';
 import { supabase } from '../utils/supabaseClient';
 
@@ -48,7 +47,7 @@ const Login: React.FC = () => {
       navigation.push('/it35-lab/app', 'forward', 'replace');
     }, 300);
   };
-  
+
   return (
     <IonPage>
       <IonContent className='ion-padding'>
@@ -67,13 +66,14 @@ const Login: React.FC = () => {
               width: '150px',
               height: '150px',
               borderRadius: '50%', 
-              overflow: 'hidden' 
+              overflow: 'hidden',
+              boxShadow: '0 0 15px red, 0 0 30px darkred' // Optional: red glow
             }}
           >
-            <IonIcon 
-              icon={logoIonic}
-              color='primary'
-              style={{ fontSize: '120px', color: '#6c757d' }} 
+            <img 
+              src="https://media.giphy.com/media/IwSG1QKOwDjQk/giphy.gif" 
+              alt="Profile GIF"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
             />
           </IonAvatar>
           <h1 style={{
