@@ -1,0 +1,208 @@
+/* FeedContainer.css */
+
+/* Background and container styling */
+.feed-content {
+  --background: transparent;
+  background: url('https://www.gifcen.com/wp-content/uploads/2022/09/demon-slayer-gif-1.gif') no-repeat center center fixed;
+  background-size: cover;
+  overflow-y: auto;
+  color: white;
+  backdrop-filter: blur(0px);
+}
+
+/* Background for when writing a post */
+.feed-content.writing-post {
+  background: white !important;
+  color: black !important; /* Update text color to black */
+}
+
+/* Card container styles */
+.glass-container {
+  padding: 1rem;
+}
+
+/* Transparent elements */
+ion-card,
+ion-card-header,
+ion-card-content,
+ion-modal,
+ion-toolbar,
+ion-footer,
+ion-popover,
+ion-button {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Glowing text */
+ion-card-title,
+ion-card-subtitle,
+ion-text,
+ion-label,
+h1,
+p {
+  color: white !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+               0 0 10px rgba(255, 255, 255, 0.4),
+               0 0 15px rgba(255, 255, 255, 0.3);
+  transition: color 0.3s ease;
+  mix-blend-mode: lighten;
+}
+
+/* Glowing text effect for the 'Write a post' */
+ion-card-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  animation: glowingText 3s ease-in-out infinite;
+}
+
+/* Stronger glowing text effect with changing colors */
+@keyframes glowingText {
+  0% {
+    color: #ff69b4;
+    text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4, 0 0 45px #ff69b4;
+  }
+  25% {
+    color: #00ff00;
+    text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 45px #00ff00;
+  }
+  50% {
+    color: #1e90ff;
+    text-shadow: 0 0 15px #1e90ff, 0 0 30px #1e90ff, 0 0 45px #1e90ff;
+  }
+  75% {
+    color: #ffff00;
+    text-shadow: 0 0 15px #ffff00, 0 0 30px #ffff00, 0 0 45px #ffff00;
+  }
+  100% {
+    color: #ff69b4;
+    text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4, 0 0 45px #ff69b4;
+  }
+}
+
+/* Avatar ring */
+ion-avatar img {
+  border: 2px solid white;
+}
+
+/* Glowing buttons */
+ion-button {
+  color: white;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* Modal and alerts */
+ion-modal {
+  --background: transparent;
+}
+
+ion-alert {
+  --background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+/* Fade-in animation for elements */
+ion-card, ion-input, ion-button, ion-modal {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Make the 'Write a post' input clearer */
+ion-input.writing-post, ion-textarea.writing-post {
+  background-color: white !important; /* Solid white background */
+  color: black !important; /* Black text for better readability */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 1rem; /* Some padding for comfort */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow for emphasis */
+  transition: background-color 0.3s ease;
+}
+
+/* Focus effect for the input field */
+ion-input.writing-post:focus, ion-textarea.writing-post:focus {
+  background-color: #f1f1f1 !important; /* Slightly darker background when focused */
+  outline: none; /* Remove outline on focus */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* Darker shadow on focus */
+}
+
+
+ion-card-title,
+ion-card-subtitle,
+ion-text,
+ion-label,
+h1,
+p {
+  color: white !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+               0 0 10px rgba(255, 255, 255, 0.4),
+               0 0 15px rgba(255, 255, 255, 0.3);
+  transition: color 0.3s ease;
+  mix-blend-mode: lighten;
+}
+
+ion-card-title,
+ion-card-subtitle,
+ion-text,
+ion-label,
+h1,
+p {
+  color: white !important;
+  text-shadow: 
+    0 0 2px #000,    /* soft black glow */
+    0 0 5px #fff,    /* soft white glow */
+    0 0 10px #fff,   /* stronger white glow */
+    0 0 15px #000;   /* deeper black glow */
+  transition: color 0.3s ease;
+  mix-blend-mode: normal;
+}
+
+
+
+ion-avatar img {
+  border: 2px solid crimson;
+  animation: redAliveGlow 3s infinite ease-in-out;
+  border-radius: 50%;
+}
+
+@keyframes redAliveGlow {
+  0% {
+    box-shadow:
+      0 0 5px crimson,
+      0 0 10px red,
+      0 0 15px darkred;
+    transform: scale(1);
+  }
+  25% {
+    box-shadow:
+      0 0 15px crimson,
+      0 0 25px red,
+      0 0 35px darkred;
+    transform: scale(1.03);
+  }
+  50% {
+    box-shadow:
+      0 0 25px red,
+      0 0 45px crimson,
+      0 0 60px darkred;
+    transform: scale(1.06);
+  }
+  75% {
+    box-shadow:
+      0 0 15px crimson,
+      0 0 25px red,
+      0 0 35px darkred;
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow:
+      0 0 5px crimson,
+      0 0 10px red,
+      0 0 15px darkred;
+    transform: scale(1);
+  }
+}
