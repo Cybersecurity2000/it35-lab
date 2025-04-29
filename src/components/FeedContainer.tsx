@@ -3,12 +3,13 @@ import {
   IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton,
   IonInput, IonLabel, IonModal, IonFooter, IonCard, IonCardContent,
   IonCardHeader, IonCardSubtitle, IonCardTitle, IonAlert, IonText,
-  IonAvatar, IonCol, IonGrid, IonRow, IonIcon, IonPopover
+  IonAvatar, IonCol, IonGrid, IonRow, IonIcon, IonPopover, IonTextarea
 } from '@ionic/react';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '../utils/supabaseClient';
-import { pencil } from 'ionicons/icons';
-import './FeedContainer.css'; // 👈 Import the CSS here
+import { pencil, shareSocialOutline } from 'ionicons/icons';
+import EmojiPicker from 'emoji-picker-react';
+import './FeedContainer.css';
 
 interface Post {
   post_id: string;
@@ -29,6 +30,7 @@ const FeedContainer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [popoverState, setPopoverState] = useState<{ open: boolean; event: Event | null; postId: string | null }>({ open: false, event: null, postId: null });
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -72,9 +74,7 @@ const FeedContainer = () => {
 
     const { data, error } = await supabase
       .from('posts')
-      .insert([
-        { post_content: postContent, user_id: user.id, username, avatar_url: avatarUrl }
-      ])
+      .insert([ { post_content: postContent, user_id: user.id, username, avatar_url: avatarUrl } ])
       .select('*');
 
     if (!error && data) {
@@ -82,6 +82,7 @@ const FeedContainer = () => {
     }
 
     setPostContent('');
+    setShowEmojiPicker(false);
   };
 
   const deletePost = async (post_id: string) => {
@@ -112,6 +113,24 @@ const FeedContainer = () => {
     }
   };
 
+  const addEmoji = (emojiObject: any) => {
+    setPostContent(prev => prev + emojiObject.emoji);
+  };
+
+  const sharePost = (postContent: string) => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Check out this post!',
+        text: postContent,
+        url: window.location.href,
+      })
+        .then(() => console.log('Shared successfully'))
+        .catch((error) => console.error('Error sharing:', error));
+    } else {
+      console.log('Web Share API not supported');
+    }
+  };
+
   return (
     <>
       <IonContent className="feed-content" fullscreen>
@@ -123,11 +142,13 @@ const FeedContainer = () => {
                   <IonCardTitle>Create Post</IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent>
-                  <IonInput
+                  <IonTextarea
                     value={postContent}
                     onIonChange={e => setPostContent(e.detail.value!)}
                     placeholder="Write a post..."
                   />
+                  <IonButton onClick={() => setShowEmojiPicker(!showEmojiPicker)}>😀</IonButton>
+                  {showEmojiPicker && <EmojiPicker onEmojiClick={addEmoji} />}
                 </IonCardContent>
                 <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.5rem' }}>
                   <IonButton onClick={createPost}>Post</IonButton>
@@ -168,6 +189,9 @@ const FeedContainer = () => {
                     <IonText style={{ color: 'black' }}>
                       <h1>{post.post_content}</h1>
                     </IonText>
+                    <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                      <IonIcon icon={shareSocialOutline} onClick={() => sharePost(post.post_content)} />
+                    </div>
                   </IonCardContent>
 
                   <IonPopover
@@ -213,7 +237,7 @@ const FeedContainer = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonInput
+          <IonTextarea
             value={postContent}
             onIonChange={e => setPostContent(e.detail.value!)}
             placeholder="Edit your post..."
