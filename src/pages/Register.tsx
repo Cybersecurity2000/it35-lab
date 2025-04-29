@@ -43,6 +43,9 @@ const Register: React.FC = () => {
   const [alertMessage, setAlertMessage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
+  // ✅ Dynamic background GIF
+  const bgGifUrl = 'https://i.gifer.com/origin/46/462c6f5f67c13830cd9fcdbfc7b55ded.gif';
+
   const handleOpenVerificationModal = () => {
     if (!email.endsWith("@nbsc.edu.ph")) {
       setAlertMessage("Only @nbsc.edu.ph emails are allowed to register.");
@@ -105,6 +108,9 @@ const Register: React.FC = () => {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100%',
+          backgroundImage: `url(${bgGifUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}>
           <div style={{
             background: 'rgba(255, 255, 255, 0.1)',
