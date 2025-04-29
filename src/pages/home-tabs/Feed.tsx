@@ -7,7 +7,7 @@ import {
     IonTitle, 
     IonToolbar 
 } from '@ionic/react';
-import SearchContainer from '../../components/SearchContainer';
+import FeedContainer from '../../components/FeedContainer';
 
 const Feed: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const Feed: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <SearchContainer />
+        <FeedContainer />
       </IonContent>
     </IonPage>
   );

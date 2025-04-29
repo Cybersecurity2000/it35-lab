@@ -30,7 +30,7 @@ const About: React.FC = () => {
 
             {/* Profile Picture GIF */}
             <img 
-              src="https://miro.medium.com/max/1400/1*5_-vAY4eZmoSzW9eXq6ABw.gif" // Replace with your actual GIF URL
+              src="https://media1.tenor.com/images/e5014aff963de781928c6b96cf3a6bc3/tenor.gif?itemid=15735536" // Replace with your actual GIF URL
               alt="Melvin Reyes Profile"
               className="profile-gif animate__animated animate__zoomIn"
             />
